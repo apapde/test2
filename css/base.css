@@ -19,7 +19,11 @@
     --p-block: clamp(16px, calc(0.714vw + 13.714px), 24px);
     --p-inline: clamp(32px, calc(1.428vw + 27.428px), 48px);
 
-    --p-block-start: clamp(14px, calc(1.964vw + 7.72px), 36px);
+    --p-region: clamp(108px, calc(4.33vw + 94.14px), 156.5px);
+
+    --p-block-start-end: clamp(14px, calc(1.964vw + 7.72px), 36px);
+
+    --p-container: clamp(15px, calc(3.125vw + 5px), 50px);
     
     --space-xs: clamp(0.25rem, 0.7vw, 0.5rem); /* 4–8px */ 
     --space-sm: clamp(1.125rem, .5472rem + 2.8892vw, 3.375rem); /* 8-12px */

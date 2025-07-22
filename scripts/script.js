@@ -115,3 +115,39 @@ glitchElements.forEach(el => {
         el.textContent = originalText;
     });
 });
+
+
+(function () {
+
+    let hamburger = {
+        menu: document.querySelector('.menu-mobile-container'),
+        navToggle: document.querySelector('.nav-toggle'),
+
+        initialize() {
+            this.navToggle.addEventListener('click', () => { this.toggle(); });
+        },
+
+        toggle() {
+            this.navToggle.classList.toggle('expanded');
+            this.menu.classList.toggle('expanded');
+        },
+    };
+
+    hamburger.initialize();
+
+}());
+
+const smoothLinks = document.querySelectorAll('a[href^="#"]');
+for (let smoothLink of smoothLinks) {
+    smoothLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const id = smoothLink.getAttribute('href');
+        document.querySelector('.menu-mobile-container').classList.remove('expanded');
+        document.querySelector('.nav-toggle').classList.remove('expanded');
+
+        document.querySelector(id).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+};
