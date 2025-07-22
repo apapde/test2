@@ -1,9 +1,12 @@
 .header {
-    position: absolute;
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    width: 100%;
     z-index: 1;
 
-    width: 100%;
-    padding-block-start: clamp(.875rem, .5219rem + 1.7657vw, 2.25rem);
+    
+    padding-block-start: var(--p-block-start);
 
     .header__wrapper {
         position: relative;
@@ -13,6 +16,7 @@
 
         border: 1px solid var(--border-color);
         border-radius: var(--space-xxl);
+        background: var(--bg-main);
     }
 }
 
