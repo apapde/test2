@@ -1,6 +1,11 @@
 .accent {
     color: var(--accent);
 }
+
 .accent-p {
     color: var(--accent-pink);
+}
+
+.accent-y {
+    color: var(--accent-yellow);
 }
