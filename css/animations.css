@@ -1,0 +1,47 @@
+@keyframes glitch-shake {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-1px, 1px);
+    }
+
+    40% {
+        transform: translate(1px, -1px);
+    }
+
+    60% {
+        transform: translate(-1px, -1px);
+    }
+
+    80% {
+        transform: translate(1px, 1px);
+    }
+}
+
+@keyframes glitch-flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.glitch-effect {
+    animation: glitch-shake 0.2s ease, glitch-flash 0.2s ease;
+    text-shadow:
+        -2px 0 var(--accent-pink),
+        2px 0 var(--accent),
+        0 0 2px var(--accent),
+        0 0 6px var(--accent),
+        0 0 12px var(--accent-pink);
+}

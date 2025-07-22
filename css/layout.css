@@ -1,0 +1,22 @@
+.container {
+    position: relative;
+
+    width: 100%;
+    max-width: 1440px;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    margin-inline: auto;
+}
+
+.region {
+    padding-block-start: var(--region-space) ;
+    padding-block-end: var(--region-space);
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+}

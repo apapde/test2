@@ -1,0 +1,49 @@
+:root {
+    --bg-main: #0c0f14;
+    --bg-card: #151921;
+    --text-main: #e9f0fb;
+    --accent: #00ffff;
+    --accent-pink: #ff0099;
+    --border-color: #20242c;
+    --glitch-yellow: #ff0;
+    --danger: #ff3333;
+    --success: #33ffaa;
+    
+    --font-main: "Space Grotesk", sans-serif;;
+    --font-title: "Major Mono Display", monospace;
+
+    --size-logo: clamp(16px, calc(0.714vw + 13.714px), 24px);
+    --size-title: clamp(22px, calc(6.607vw + 0.86px), 96px);
+    --size-sub-title: clamp(16px, calc(0.714vw + 13.72px), 24px);
+
+    --p-block: clamp(16px, calc(0.714vw + 13.714px), 24px);
+    --p-inline: clamp(32px, calc(1.428vw + 27.428px), 48px);
+    
+    --space-xs: clamp(0.25rem, 0.7vw, 0.5rem); /* 4–8px */ 
+    --space-sm: clamp(1.125rem, .5472rem + 2.8892vw, 3.375rem); /* 8-12px */
+    --space-md: clamp(0.75rem, 1.5vw, 1rem); /* 12-16px */
+    --space-lg: clamp(1rem, 2vw, 1.5rem); /* 16-24px */
+    --space-xl: clamp(1.5rem, 3vw, 2rem); /* 24-32px */
+    --space-xxl: clamp(2rem, 4vw, 3rem); /* 32-48px */
+
+    --global-style-ul-indent-space: 1.15rem;
+   
+    --region-space: clamp(3.375rem, 1.9304rem + 7.2231vw, 9rem);
+}
+
+body {
+    min-width: 320px;
+
+    background: var(--bg-main);
+
+    font-family: var(--font-main);
+    color: var(--text-main);
+}
+
+a {
+    color: var(--text-main);
+}
+
+ul {
+    padding-inline-start: var(--global-style-ul-indent-space);
+}

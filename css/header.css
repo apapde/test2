@@ -1,0 +1,46 @@
+.header {
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    padding-block-start: clamp(.875rem, .5219rem + 1.7657vw, 2.25rem);
+
+    .header__wrapper {
+        position: relative;
+
+        padding-block: var(--p-block);
+        padding-inline: var(--p-inline);
+
+        border: 1px solid var(--border-color);
+        border-radius: var(--space-xxl);
+    }
+}
+
+.byte-temple-logo {
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    font-size: var(--size-logo);
+}
+
+.navigation {
+    text-transform: uppercase;
+    
+    ul {
+        margin-block: 0;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .navigation {
+        display: none;
+    }
+}
