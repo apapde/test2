@@ -10,11 +10,11 @@
     --success: #33ffaa;
     
     --font-main: "Space Grotesk", sans-serif;
-    --font-title: "Bebas Neue", sans-serif;
+    --font-title: "Audiowide", sans-serif;
 
     --size-logo: clamp(16px, calc(0.714vw + 13.714px), 24px);
 
-    --size-title: clamp(42px, calc(6.25vw + 23px), 112px);
+    --size-title: clamp(31px, calc(5.902vw + 12.11px), 112px);
     --size-sub-title: clamp(16px, calc(0.714vw + 13.72px), 24px);
 
     --p-block: clamp(16px, calc(0.714vw + 13.714px), 24px);

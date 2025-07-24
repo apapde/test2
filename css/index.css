@@ -3,7 +3,6 @@
     top: 0;
     z-index: 1;
     overflow: hidden;
-    pointer-events: none;
     .intro-wrapper {
         display: flex;
         flex-direction: column;
@@ -19,10 +18,10 @@
 }
 
 .title {
-    /* margin-bottom: clamp(22px, calc(2.5vw + 14px), 50px); */
-    margin-bottom: 15px;
+    margin-bottom: clamp(22px, calc(2.5vw + 14px), 50px);
     font-family: var(--font-title);
     font-size: var(--size-title);
+    font-weight: 700;
 }
 
 .sub-title {
