@@ -9,11 +9,12 @@
     --danger: #ff3333;
     --success: #33ffaa;
     
-    --font-main: "Space Grotesk", sans-serif;;
-    --font-title: "Major Mono Display", monospace;
+    --font-main: "Space Grotesk", sans-serif;
+    --font-title: "Bebas Neue", sans-serif;
 
     --size-logo: clamp(16px, calc(0.714vw + 13.714px), 24px);
-    --size-title: clamp(22px, calc(6.607vw + 0.86px), 96px);
+
+    --size-title: clamp(42px, calc(6.25vw + 23px), 112px);
     --size-sub-title: clamp(16px, calc(0.714vw + 13.72px), 24px);
 
     --p-block: clamp(16px, calc(0.714vw + 13.714px), 24px);
@@ -48,8 +49,4 @@ body {
 
 a {
     color: var(--text-main);
-}
-
-ul {
-    padding-inline-start: var(--global-style-ul-indent-space);
 }

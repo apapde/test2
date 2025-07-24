@@ -1,26 +1,26 @@
 const vowelMap = {
-    'A': ['4', '@', '∆', 'Λ', 'Д', 'Ⱥ', 'Â', 'Ä', 'À', 'Ā', 'α'],
-    'a': ['4', '@', '∆', 'λ', 'д', 'ą', 'à', 'ä', 'α'],
+    'A': ['4', '∆', 'Λ', 'Ⱥ', 'Â', 'À'],
+    'a': ['4', '∆', 'λ', 'ą', 'à', 'ä'],
 
-    'E': ['3', '€', 'Ξ', 'Σ', 'Ē', 'È', 'É', 'Ê', 'Ë', 'ξ'],
-    'e': ['3', '€', 'ξ', 'є', 'ë', 'ε', '℮', 'ē', 'ė', 'е'],
+    'E': ['3', '€', 'Ξ', 'Σ', 'È', 'ξ'],
+    'e': ['3', '€', 'ξ', 'є', 'ε', 'ė'],
 
-    'I': ['1', '!', '|', 'Ì', 'Í', 'Î', 'Ï', 'Ɩ', 'ɪ', 'ɨ'],
-    'i': ['1', '!', '|', '¡', 'ι', 'ɩ', 'ì', 'í', 'î', 'ï'],
+    'I': ['1', '!', '|', 'Î', 'ɨ'],
+    'i': ['1', '!', '|', 'î'],
 
-    'O': ['0', 'Ø', '∅', 'Θ', 'Õ', 'Ó', 'Ô', 'Ö', 'Œ', 'Ф'],
-    'o': ['0', 'ø', '¤', 'º', 'ò', 'ó', 'ô', 'ö', 'œ', 'σ'],
+    'O': ['Ø', '∅', 'Ó', 'Ô', 'Œ'],
+    'o': ['ø', '¤', 'º', 'ò', 'ó', 'ô', 'œ',],
 
-    'U': ['∪', 'µ', 'Û', 'Ü', 'Ù', 'Ú', 'Ū', 'Ц', 'Ʉ'],
-    'u': ['µ', 'ʉ', 'ü', 'ù', 'ú', 'û', 'ū', 'ц', 'υ'],
+    'U': ['µ', 'Û', 'Ü', 'Ù', 'Ú', 'Ū', 'Ʉ'],
+    'u': ['µ', 'ʉ', 'ü', 'ù', 'ú', 'û', 'ū'],
 
-    'Y': ['¥', 'Ɏ', 'Ұ', 'Υ', 'Ý', 'Ÿ', 'ɣ', 'γ'],
-    'y': ['¥', 'ɏ', 'ұ', 'ý', 'ÿ', 'γ', 'ʏ', 'у']
+    'Y': ['¥', 'Ɏ', 'Ұ', 'Ý', 'Ÿ'],
+    'y': ['¥', 'ɏ', 'ұ', 'ý', 'ÿ']
 };
 
 function glitchTextRandomVowel(el, original) {
     let iterations = 0;
-    const maxIterations = 10;
+    const maxIterations = 7;
 
     el.classList.add('glitch-effect');
 
@@ -38,6 +38,7 @@ function glitchTextRandomVowel(el, original) {
 
         el.textContent = glitched;
         iterations++;
+
 
         if (iterations >= maxIterations) {
             clearInterval(interval);
@@ -152,3 +153,11 @@ for (let smoothLink of smoothLinks) {
         });
     });
 };
+
+const introContent = document.querySelector('.intro-wrapper-index');
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const scale = Math.max(1 - scrollY / 900, 0.1); // Ограничиваем scale
+    introContent.style.transform = `scale(${scale})`;
+});

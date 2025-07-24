@@ -3,7 +3,7 @@
     inset-inline: 0;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 99;
 
     
     padding-block-start: var(--p-block-start-end);
@@ -30,11 +30,6 @@
 .navigation {
     text-transform: uppercase;
     
-    ul {
-            margin-block: 0;
-            padding: 0;
-        }
-
     a {
         text-decoration: none;
         letter-spacing: 0.1em;
@@ -42,7 +37,6 @@
 }
 
 .nav-toggle {
-    
     position: relative;
     z-index: 101;
     min-width: 25px;
@@ -95,7 +89,6 @@
 
 .menu-mobile-container {
     position: fixed;
-/*    top: clamp(90px, calc(6.666vw + 68.67px), 120px); */
     top: clamp(90px, calc(6.25vw + 70px), 160px);
     bottom: var(--p-block-start-end);
     right: -100%;
@@ -120,7 +113,7 @@
 .menu-mobile {
     background: var(--bg-main);
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .desktop-hidden {
