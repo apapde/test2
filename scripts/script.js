@@ -79,16 +79,31 @@ glitchElements.forEach(el => {
 const canvas = document.getElementById("fractal");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.documentElement.clientHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Цвета
+const COLORS = ['#00ffff', '#ff0099', '#ffff00'];
+
+let numPoints;
+
+function updateNumPoints() {
+    const w = window.innerWidth;
+    if (w < 576) numPoints = 40;
+    else if (w < 768) numPoints = 60;
+    else if (w < 992) numPoints = 80;
+    else numPoints = 100;
+}
+
+updateNumPoints();
 
 const points = [];
-const colors = ['#00ffff', '#ff0099', '#ffff00'];
-const totalPoints = 100;
-const maxDistance = 140;
-let pointer = { x: null, y: null };
-
-for (let i = 0; i < totalPoints; i++) {
+// Инициализация точек
+for (let i = 0; i < numPoints; i++) {
     points.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -97,31 +112,28 @@ for (let i = 0; i < totalPoints; i++) {
     });
 }
 
-// Обработка мыши и касания
-window.addEventListener('mousemove', (e) => {
-    pointer.x = e.clientX;
-    pointer.y = e.clientY;
+let cursor = { x: null, y: null };
+
+// Курсор мыши
+document.addEventListener("mousemove", e => {
+    cursor.x = e.clientX;
+    cursor.y = e.clientY;
 });
 
-window.addEventListener('touchmove', (e) => {
+// Сенсорные экраны
+document.addEventListener("touchmove", e => {
     if (e.touches.length > 0) {
-        pointer.x = e.touches[0].clientX;
-        pointer.y = e.touches[0].clientY;
+        cursor.x = e.touches[0].clientX;
+        cursor.y = e.touches[0].clientY;
     }
 }, { passive: true });
 
-window.addEventListener('touchend', () => {
-    pointer.x = null;
-    pointer.y = null;
-});
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+document.addEventListener("touchend", () => {
+    cursor.x = null;
+    cursor.y = null;
 });
 
 function draw() {
-    // Фон — без прозрачности, без "следа"
     ctx.fillStyle = 'rgba(12,15,20,1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -130,6 +142,7 @@ function draw() {
         p1.x += p1.vx;
         p1.y += p1.vy;
 
+        // отражение от границ
         if (p1.x < 0 || p1.x > canvas.width) p1.vx *= -1;
         if (p1.y < 0 || p1.y > canvas.height) p1.vy *= -1;
 
@@ -138,10 +151,14 @@ function draw() {
             const dx = p1.x - p2.x;
             const dy = p1.y - p2.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < maxDistance) {
-                const alpha = 1 - dist / maxDistance;
-                const color = colors[(i + j) % colors.length];
-                ctx.strokeStyle = hexToRgba(color, alpha);
+
+            const maxDist = 120;
+            if (dist < maxDist) {
+                const opacity = 1 - dist / maxDist;
+                const color = COLORS[(i + j) % COLORS.length];
+
+                ctx.strokeStyle = hexToRgba(color, opacity);
+                ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(p1.x, p1.y);
                 ctx.lineTo(p2.x, p2.y);
@@ -149,18 +166,21 @@ function draw() {
             }
         }
 
-        // Линии к курсору
-        if (pointer.x !== null && pointer.y !== null) {
-            const dx = p1.x - pointer.x;
-            const dy = p1.y - pointer.y;
+        // связь с курсором
+        if (cursor.x !== null && cursor.y !== null) {
+            const dx = p1.x - cursor.x;
+            const dy = p1.y - cursor.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < maxDistance) {
-                const alpha = 1 - dist / maxDistance;
-                const color = colors[i % colors.length];
-                ctx.strokeStyle = hexToRgba(color, alpha);
+            const maxCursorDist = 150;
+            if (dist < maxCursorDist) {
+                const opacity = 1 - dist / maxCursorDist;
+                const color = COLORS[i % COLORS.length];
+
+                ctx.strokeStyle = hexToRgba(color, opacity);
+                ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(p1.x, p1.y);
-                ctx.lineTo(pointer.x, pointer.y);
+                ctx.lineTo(cursor.x, cursor.y);
                 ctx.stroke();
             }
         }
@@ -170,11 +190,10 @@ function draw() {
 }
 
 function hexToRgba(hex, alpha) {
-    const bigint = parseInt(hex.replace("#", ""), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return `rgba(${r},${g},${b},${alpha.toFixed(2)})`;
+    const r = parseInt(hex.substr(1, 2), 16);
+    const g = parseInt(hex.substr(3, 2), 16);
+    const b = parseInt(hex.substr(5, 2), 16);
+    return `rgba(${r},${g},${b},${alpha})`;
 }
 
 draw();

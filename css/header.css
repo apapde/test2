@@ -124,11 +124,14 @@
     }
 }
 
+.menu-mobile {
+    font-size: 22px;
+}
+
 .menu-mobile-container.expanded {
     pointer-events: all;
     opacity: 1;
 }
-
 
 .menu-mobile-item.active {
     position: relative;
