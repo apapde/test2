@@ -10,7 +10,7 @@
 
 .region-intro {
     padding-block-start: var(--p-region);
-    padding-block-end: var(--space-xxl);
+    padding-block-end: 48px;
 }
 
 .region-sections {
@@ -39,4 +39,10 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr auto;
         align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+    .region-intro {
+        padding-block-end: 108px;
+    }
 }
