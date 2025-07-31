@@ -1,67 +1,3 @@
-const vowelMap = {
-    'A': ['4', '∆', 'Λ', 'Ⱥ', 'Â', 'À'],
-    'a': ['4', '∆', 'λ', 'ą', 'à', 'ä'],
-
-    'E': ['3', '€', 'Ξ', 'Σ', 'È', 'ξ'],
-    'e': ['3', '€', 'ξ', 'є', 'ε', 'ė'],
-
-    'I': ['1', '!', '|', 'Î', 'ɨ'],
-    'i': ['1', '!', '|', 'î'],
-
-    'O': ['Ø', '∅', 'Ó', 'Ô', 'Œ'],
-    'o': ['ø', '¤', 'º', 'ò', 'ó', 'ô', 'œ',],
-
-    'U': ['µ', 'Û', 'Ü', 'Ù', 'Ú', 'Ū', 'Ʉ'],
-    'u': ['µ', 'ʉ', 'ü', 'ù', 'ú', 'û', 'ū'],
-
-    'Y': ['¥', 'Ɏ', 'Ұ', 'Ý', 'Ÿ'],
-    'y': ['¥', 'ɏ', 'ұ', 'ý', 'ÿ']
-};
-
-function glitchTextRandomVowel(el, original) {
-    let iterations = 0;
-    const maxIterations = 7;
-
-    el.classList.add('glitch-effect');
-
-    const interval = setInterval(() => {
-        const glitched = original
-            .split('')
-            .map(char => {
-                if (vowelMap[char]) {
-                    const replacements = vowelMap[char];
-                    return replacements[Math.floor(Math.random() * replacements.length)];
-                }
-                return char;
-            })
-            .join('');
-
-        el.textContent = glitched;
-        iterations++;
-
-
-        if (iterations >= maxIterations) {
-            clearInterval(interval);
-            el.textContent = original;
-            el.classList.remove('glitch-effect');
-        }
-    }, 60);
-}
-
-document.querySelectorAll('.glitch-text').forEach(el => {
-    const originalText = el.textContent;
-
-    const loopGlitch = () => {
-        setTimeout(() => {
-            glitchTextRandomVowel(el, originalText);
-            loopGlitch();
-        }, Math.random() * 4000 + 2000);
-    };
-
-    loopGlitch();
-});
-
-
 const glitchElements = document.querySelectorAll('.glitch-hover');
 
 const glitchMap = {
@@ -139,25 +75,106 @@ glitchElements.forEach(el => {
 
 }());
 
-const smoothLinks = document.querySelectorAll('a[href^="#"]');
-for (let smoothLink of smoothLinks) {
-    smoothLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const id = smoothLink.getAttribute('href');
-        document.querySelector('.menu-mobile-container').classList.remove('expanded');
-        document.querySelector('.nav-toggle').classList.remove('expanded');
+/*CANVAS*/
+const canvas = document.getElementById("fractal");
+const ctx = canvas.getContext("2d");
 
-        document.querySelector(id).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const points = [];
+const colors = ['#00ffff', '#ff0099', '#ffff00'];
+const totalPoints = 100;
+const maxDistance = 140;
+let pointer = { x: null, y: null };
+
+for (let i = 0; i < totalPoints; i++) {
+    points.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
     });
-};
+}
 
-const introContent = document.querySelector('.intro-wrapper-index');
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const scale = Math.max(1 - scrollY / 900, 0.1); // Ограничиваем scale
-    introContent.style.transform = `scale(${scale})`;
+// Обработка мыши и касания
+window.addEventListener('mousemove', (e) => {
+    pointer.x = e.clientX;
+    pointer.y = e.clientY;
 });
+
+window.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+        pointer.x = e.touches[0].clientX;
+        pointer.y = e.touches[0].clientY;
+    }
+}, { passive: true });
+
+window.addEventListener('touchend', () => {
+    pointer.x = null;
+    pointer.y = null;
+});
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+function draw() {
+    // Фон — без прозрачности, без "следа"
+    ctx.fillStyle = 'rgba(12,15,20,1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < points.length; i++) {
+        const p1 = points[i];
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+
+        if (p1.x < 0 || p1.x > canvas.width) p1.vx *= -1;
+        if (p1.y < 0 || p1.y > canvas.height) p1.vy *= -1;
+
+        for (let j = i + 1; j < points.length; j++) {
+            const p2 = points[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDistance) {
+                const alpha = 1 - dist / maxDistance;
+                const color = colors[(i + j) % colors.length];
+                ctx.strokeStyle = hexToRgba(color, alpha);
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+        }
+
+        // Линии к курсору
+        if (pointer.x !== null && pointer.y !== null) {
+            const dx = p1.x - pointer.x;
+            const dy = p1.y - pointer.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDistance) {
+                const alpha = 1 - dist / maxDistance;
+                const color = colors[i % colors.length];
+                ctx.strokeStyle = hexToRgba(color, alpha);
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(pointer.x, pointer.y);
+                ctx.stroke();
+            }
+        }
+    }
+
+    requestAnimationFrame(draw);
+}
+
+function hexToRgba(hex, alpha) {
+    const bigint = parseInt(hex.replace("#", ""), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r},${g},${b},${alpha.toFixed(2)})`;
+}
+
+draw();

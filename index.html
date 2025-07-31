@@ -2,62 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum.scale=1.0, user-scalable=no">
     <title>Byte Temple</title>
 
     
     <link rel="stylesheet" href="css/styles.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Space+Grotesk:wght@300..700&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
     <header class="header">
         <div class="container">
-            <div class="header__wrapper flex-wrapper">
-                <a href="index.html" class="byte-temple-logo glitch-hover" data-text="Byte Temple">Byte Temple</a>
-
-                <nav class="navigation flex-wrapper">
-                    <ul class="flex-wrapper menu-desktop" role="list">
-                        <li><a href="" class="glitch-hover" data-text="What We Do">What We Do</a></li>
-                        <li><a href="" class="glitch-hover" data-text="Work">Work</a></li>
-                        <li><a href="" class="glitch-hover cybr-btn" data-text="Get in Touch">Get in Touch</a></li>
+            <nav class="header__wrapper flex-row navbar">
+                <!--LEFT-WRAPPER-->
+                <div class="navbar-left">
+                    <a href="/" class="byte-temple-logo glitch-hover glitch-hover-logo" data-text="Byte Temple">Byte Temple</a>
+                </div>
+                <!--RIGHR-WRAPPER-->
+                <div class="navbar-right flex-row">
+                    <!--MENU-DESKTOP-->
+                    <ul class="flex-row menu-desktop" role="list">
+                        <li><a href="/" class="menu-desktop-item glitch-hover glitch-hover-home active" data-text="Home">Home</a></li>
+                        <li><a href="" class="menu-desktop-item glitch-hover glitch-hover-projects" data-text="Projects">Projects</a></li>
+                        <li><a href="" class="menu-desktop-item glitch-hover glitch-hover-services" data-text="Services">Services</a></li>
+                        <li><a href="" class="menu-desktop-item glitch-hover glitch-hover-store" data-text="Store">Store</a></li>
+                        <li><a href="" class="glitch-hover glitch-hover-contact cybr-btn" data-text="Get in Touch">Get in Touch</a></li>
                     </ul>
-
+                    <!--NAV-TOGGLE-->
                     <div class="nav-toggle">
                         <div class="nav-toggle-bar"></div>
                     </div>
-                    
+                    <!--MENU-MOBILE-->
                     <div class="container menu-mobile-container">
-                        <div class="header__wrapper flex-column">
+                        <div class="header__wrapper flex-row">    
                             <ul class="menu-mobile flex-column" role="list">
-                                <li><a href="" class="glitch-hover" data-text="Studio">Studio</a></li>
-                                <li class="desktop-hidden"><a href="" class="glitch-hover" data-text="What We Do">What We Do</a></li>
-                                <li class="desktop-hidden"><a href="" class="glitch-hover" data-text="Work">Work</a></li>
+                                <li><a href="/" class="menu-mobile-item active">Home</a></li>
+                                <li><a href="" class="menu-mobile-item">Projects</a></li>
+                                <li><a href="" class="menu-mobile-item">Services</a></li>
+                                <li><a href="" class="menu-mobile-item">Store</a></li>
                                 <li></li>
-                                <li><a href="courses.html" class="glitch-hover" data-text="Learn With Us">Learn With Us</a></li>
-                                <li><a href="shop.html" class="glitch-hover" data-text="Template Store">Template Store</a></li>
-                                <li class="desktop-hidden"></li>
-                                <li class="desktop-hidden"><a href="" class="glitch-hover cybr-btn" data-text="Get in Touch">Get in Touch</a></li>
+                                <li><a href="" class="cybr-btn">Get in Touch</a></li>
                             </ul>
                         </div>
                     </div>
-                </nav>
-
-            </div>
+                </div>
+            </nav>
         </div>
     </header>
 
 
     <section class="intro">
+        <canvas id="fractal" class="fractal"></canvas>
         <div class="container">
             <div class="intro-wrapper intro-wrapper-index region-intro">
                 <h1 class="glitch-text title" data-original="Code is Sacred Design is Ritual">
-                    Code is Sacred Design is Ritual</h1>
+                    <span class="title-500">Code is Sacred.</span> Design is Ritual.</h1>
                 <p class="sub-title">We design the future, byte by byte.</p>
+
             </div>
         </div>
     </section>

@@ -1,0 +1,86 @@
+.glitch-effect {
+    text-shadow:
+        -2px 0 var(--accent-pink),
+        2px 0 var(--accent),
+        0 0 2px var(--accent),
+        0 0 6px var(--accent),
+        0 0 12px var(--accent-pink);
+}
+
+.accent {
+    color: var(--accent);
+}
+
+.accent-p {
+    color: var(--accent-pink);
+}
+
+.accent-y {
+    color: var(--accent-yellow);
+}
+
+.glitch-hover-logo {
+    &::after {
+        content: "Byte Temple-";
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.glitch-hover-home {
+    &::after {
+        content: "Home-";
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.glitch-hover-projects {
+    &::after {
+        content: "Projects-";
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.glitch-hover-services {
+    &::after {
+        content: "Services-";
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.glitch-hover-contact {
+    &::after {
+        content: "Get in Touch-";
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.glitch-hover-store {
+    &::after {
+        content: "Store-";
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,16 @@
+body {
+    min-width: 320px;
+
+    background: var(--bg-main);
+
+    font-family: var(--font-main);
+    color: var(--text-main);
+}
+
+a {
+    display: inline-block;
+
+    color: var(--text-main);
+    vertical-align: middle;
+    text-decoration: none;
+}

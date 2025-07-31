@@ -1,0 +1,28 @@
+.cybr-btn {
+    position: relative;
+
+    padding: 0.5em 1.2em;
+    background: var(--text-main);
+    box-shadow:
+        -2px 0 var(--accent-pink),
+        2px 0 var(--accent),
+        0 0 2px var(--accent),
+        0 0 6px var(--accent),
+        0 0 12px var(--accent-pink);
+    
+    color: var(--bg-main);
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    &:active {
+        background: var(--accent-pink);
+    }
+}

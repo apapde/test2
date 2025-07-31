@@ -5,8 +5,7 @@
     width: 100%;
     z-index: 99;
 
-    
-    padding-block-start: var(--p-block-start-end);
+    padding-block-start: clamp(14px, calc(1.964vw + 7.72px), 36px);
 
     .header__wrapper {
         position: relative;
@@ -22,27 +21,39 @@
 
 .byte-temple-logo {
     transition: all 0.2s ease;
-    letter-spacing: 0.05em;
     text-decoration: none;
     font-size: var(--size-logo);
 }
 
-.navigation {
-    text-transform: uppercase;
-    
-    a {
-        text-decoration: none;
-        letter-spacing: 0.1em;
-    }
+.navbar-right {
+    position: relative;
+}
+
+.menu-desktop-item {
+    opacity: .7;
+    transition: opacity .3s ease;
+}
+
+.menu-desktop-item.active {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.menu-desktop:hover .menu-desktop-item {
+    opacity: .7;
+}
+
+.menu-desktop .menu-desktop-item:hover {
+    opacity: 1;
 }
 
 .nav-toggle {
+    display: none;
     position: relative;
     z-index: 101;
     min-width: 25px;
     height: 20px;
     cursor: pointer;
-    transition: opacity 0.5s ease;
 }
 
 .nav-toggle .nav-toggle-bar {
@@ -88,45 +99,77 @@
 }
 
 .menu-mobile-container {
+    display: none;
     position: fixed;
     top: clamp(90px, calc(6.25vw + 70px), 160px);
-    bottom: var(--p-block-start-end);
-    right: -100%;
+    bottom: clamp(14px, calc(1.964vw + 7.72px), 36px);
+    left: 0;
+    right: 0;
     z-index: 100;
 
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
     background: transparent;
-    transition: right 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s;
 
     .header__wrapper {
         min-height: 100%;
     }
+
+    .flex-row {
+        justify-content: center;
+    }
 }
 
 .menu-mobile-container.expanded {
-    right: 0;
-    left: 0;
+    pointer-events: all;
+    opacity: 1;
 }
 
-.menu-mobile {
-    background: var(--bg-main);
+
+.menu-mobile-item.active {
+    position: relative;
+    opacity: .7;
+    pointer-events: none;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        
+        background: var(--text-main);
+        border-radius: 100%;
+        box-shadow:
+            -2px 0 var(--accent-pink),
+            2px 0 var(--accent),
+            0 0 2px var(--accent),
+            0 0 6px var(--accent),
+            0 0 12px var(--accent-pink);
+    }
+}
+
+.menu-mobile,
+.menu-desktop {
     text-align: center;
-    font-size: 20px;
 }
 
-.desktop-hidden {
-    display: none;
-}
-
-
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 992px) {
     .menu-desktop {
         display: none;
     }
-    
-    .desktop-hidden {
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .menu-mobile-container {
         display: block;
     }
 }
+
