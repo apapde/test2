@@ -21,7 +21,7 @@
 
 .glitch-hover-logo {
     &::after {
-        content: "Byte Temple-";
+        content: "a.T-";
         visibility: hidden;
         pointer-events: none;
         display: block;
@@ -30,9 +30,9 @@
     }
 }
 
-.glitch-hover-home {
+.glitch-hover-campus {
     &::after {
-        content: "Home-";
+        content: "Campus-";
         visibility: hidden;
         pointer-events: none;
         display: block;
@@ -41,9 +41,9 @@
     }
 }
 
-.glitch-hover-projects {
+.glitch-hover-community {
     &::after {
-        content: "Projects-";
+        content: "Community-";
         visibility: hidden;
         pointer-events: none;
         display: block;
@@ -52,9 +52,9 @@
     }
 }
 
-.glitch-hover-services {
+.glitch-hover-roadmap {
     &::after {
-        content: "Services-";
+        content: "Roadmap-";
         visibility: hidden;
         pointer-events: none;
         display: block;
@@ -63,20 +63,9 @@
     }
 }
 
-.glitch-hover-contact {
+.glitch-hover-contact_1 {
     &::after {
-        content: "Get in Touch-";
-        visibility: hidden;
-        pointer-events: none;
-        display: block;
-        height: 0;
-        overflow: hidden;
-    }
-}
-
-.glitch-hover-store {
-    &::after {
-        content: "Store-";
+        content: "Записаться-";
         visibility: hidden;
         pointer-events: none;
         display: block;

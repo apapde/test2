@@ -11,10 +11,11 @@
         0 0 12px var(--accent-pink);
     
     color: var(--bg-main);
-    font-weight: 700;
+    font-family: var(--font-main);
+    font-weight: 600;
     text-decoration: none;
     text-align: center;
-    text-transform: uppercase;
+    
 
     transition: box-shadow 0.3s ease-in-out;
 

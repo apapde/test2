@@ -23,6 +23,7 @@
     transition: all 0.2s ease;
     text-decoration: none;
     font-size: var(--size-logo);
+    font-weight: 700;
 }
 
 .navbar-right {
@@ -122,10 +123,6 @@
     .flex-row {
         justify-content: center;
     }
-}
-
-.menu-mobile {
-    font-size: 22px;
 }
 
 .menu-mobile-container.expanded {

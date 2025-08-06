@@ -1,12 +1,12 @@
 .intro {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    overflow: hidden;
+    position: relative;
     .intro-wrapper {
         position: relative;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         
         min-height: 100vh;
         box-sizing: border-box;
@@ -27,19 +27,20 @@
 }
 
 .title {
-    margin-top: auto;
     margin-bottom: 1rem;
-    font-family: var(--font-title);
+    font-family: var(--font-main);
     font-size: var(--size-title);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .title-500 {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .sub-title {
+    max-width: 550px;
     opacity: .7;
+    margin-bottom: .5em;
 }
 
 .about {
@@ -53,9 +54,7 @@
 }
 
 @media screen and (max-width: 770px) {
-    /*.intro {
-            .intro-wrapper-index {
-                min-height: 70vh;
-            }
-        }*/
+    .sub-title {
+        max-width: 250px;
+    }
 }

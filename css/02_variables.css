@@ -9,14 +9,14 @@
     --danger: #ff3333;
     --success: #33ffaa;
 
-    --font-main: "Space Grotesk", sans-serif;
-    --font-title: "Chakra Petch", sans-serif;
+    --font-main: "Tektur", sans-serif;
+    --font-main_2: "Space Grotesk", sans-serif;
 
     --size-logo: clamp(16px, calc(0.714vw + 13.714px), 24px);
     --size-title: clamp(36px, calc(1.79vw + 30.3px), 56px);
 
-    --p-block: clamp(16px, calc(0.714vw + 13.714px), 24px);
-    --p-inline: clamp(32px, calc(1.428vw + 27.428px), 48px);
+    --p-block: clamp(12px, calc(0.714vw + 9.715px), 20px);
+    --p-inline: clamp(24px, calc(1.429vw + 19.43px), 40px);
 
     --p-region: clamp(108px, calc(4.33vw + 94.14px), 156.5px);
 
